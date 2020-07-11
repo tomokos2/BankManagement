@@ -1,29 +1,34 @@
 package main.java;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import static main.java.services.Constants.HOST;
-import static main.java.services.Constants.PASSWORD;
-import static main.java.services.Constants.USER_NAME;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
+import main.java.services.Constants;
 
 import java.sql.*;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-
+    public void start(Stage primaryStage) throws Exception {
         try {
-            DriverManager.getConnection(HOST, USER_NAME, PASSWORD);
-        } catch (SQLException e) {
-            System.out.println(e);
+            // Discourage resizing
+            primaryStage = new Stage(StageStyle.UTILITY);
+            Parent root = FXMLLoader.load(getClass().getResource("../resources/sample.fxml"));
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
+            Connection con = DriverManager.getConnection(Constants.HOST, Constants.USER_NAME, Constants.PASSWORD);
+
+        } catch(Exception e) {
+            e.printStackTrace();
         }
     }
 
