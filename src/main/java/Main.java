@@ -6,9 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import main.java.services.Constants;
-
-import java.sql.*;
+import main.java.services.Navigator;
 
 public class Main extends Application {
 
@@ -21,8 +19,7 @@ public class Main extends Application {
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
-
-            Connection con = DriverManager.getConnection(Constants.HOST, Constants.USER_NAME, Constants.PASSWORD);
+            Navigator.setStage(primaryStage);
 
         } catch(Exception e) {
             e.printStackTrace();

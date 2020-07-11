@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.NewAccountController">
+   <children>
+      <Button fx:id="loginBtn" layoutX="440.0" layoutY="346.0" mnemonicParsing="false" text="Returning customer" />
+      <Button fx:id="registerBtn" layoutX="424.0" layoutY="388.0" mnemonicParsing="false" text="Register as new customer" />
+      <Button fx:id="adminBtn" layoutX="453.0" layoutY="426.0" mnemonicParsing="false" text="Enter as admin" />
+   </children>
+</AnchorPane>
