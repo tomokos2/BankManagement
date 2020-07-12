@@ -30,6 +30,10 @@ public class Navigator {
     }
 
     public static void navigate(String filename) {
+        if (get().stage == null) {
+            System.err.println("Must initialize navigator with a stage");
+            System.exit(1);
+        }
         try {
             get().loader.setLocation(
                     new URL("file:///C:/Users/tomok/cs/MyProj/BankManagement/src/main/resources/"

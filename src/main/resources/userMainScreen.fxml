@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.MainScreenController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="736.0" prefWidth="223.0">
+                <children>
+                     <Label text="Accounts">
+                         <font>
+                             <Font name="System Bold" size="40.0" />
+                         </font>
+                     </Label>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" text="Checking" />
+                        <RadioButton mnemonicParsing="false" text="Savings" />
+                        <RadioButton mnemonicParsing="false" text="CD (Certificate of Deposit)" />
+                        <RadioButton mnemonicParsing="false" text="Retirement" />
+                     </children>
+                  </VBox>
+                 </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
