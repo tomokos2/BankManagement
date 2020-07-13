@@ -15,7 +15,7 @@ public class Main extends Application {
         try {
             // Discourage resizing
             primaryStage = new Stage(StageStyle.UTILITY);
-            Parent root = FXMLLoader.load(getClass().getResource("../resources/newAccountScene.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../resources/mainScreen.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
