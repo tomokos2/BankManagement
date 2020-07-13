@@ -34,4 +34,9 @@ public class MainScreenController {
     private void closeSignInPrompt(ActionEvent e) {
         signInPrompt.toBack();
     }
+
+    @FXML
+    private void validateLoginInfo(ActionEvent e) {
+
+    }
 }

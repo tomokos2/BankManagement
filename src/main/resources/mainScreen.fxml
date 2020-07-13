@@ -22,12 +22,12 @@
          <children>
             <Label text="Enter Credentials" />
             <Label text="User ID" GridPane.rowIndex="1" />
-            <Label text="Passrord" GridPane.rowIndex="2" />
+            <Label text="Password" GridPane.rowIndex="2" />
             <Label text="OR" GridPane.columnIndex="2" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label prefHeight="17.0" prefWidth="158.0" text="Insert Card" GridPane.columnIndex="3" />
-            <Button mnemonicParsing="false" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="validateLoginInfo" mnemonicParsing="false" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" text="Choose Card" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" onAction="#closeSignInPrompt" text="X" GridPane.columnIndex="4" />
          </children>
