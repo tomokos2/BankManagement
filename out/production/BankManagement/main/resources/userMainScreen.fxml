@@ -57,9 +57,9 @@
             </VBox>
          </children>
       </HBox>
-      <VBox fx:id="pinPrompt" prefHeight="257.0" prefWidth="373.0" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="300.0">
+      <VBox fx:id="pinPrompt" prefHeight="257.0" prefWidth="373.0" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="300.0">
          <children>
-            <Label style="-fx-background-color: #F6F6F6;" text="Enter Pin" />
+            <Label text="Enter Pin" />
             <PasswordField prefHeight="25.0" prefWidth="134.0" />
          </children>
       </VBox>
