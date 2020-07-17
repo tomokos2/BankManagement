@@ -1,0 +1,53 @@
+.root {
+    colorCultured: #f2f2f2;
+    colorBlack: #000b0f;
+    colorPlatinum: #e7eaeb;
+    colorMidnight: #003a4c;
+    colorSapphire: #004d6a;
+    colorRed: #d7504d;
+    colorYellow: #e8e2b7;
+}
+
+.background {
+    -fx-background-color: colorCultured;
+}
+
+.popup {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-background-color: colorSapphire;
+    -fx-max-height: 50em;
+}
+
+.popup .label {
+    -fx-text-fill: colorPlatinum;
+    -fx-max-width: Infinity;
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+}
+
+
+
+.popup .button {
+    -fx-background-color: colorPlatinum;
+    -fx-text-fill: colorMidnight;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-max-width: Infinity;
+}
+
+.popup .button:hover {
+    -fx-background-color: colorYellow;
+}
+
+.popup .exit {
+    -fx-text-fill: colorRed;
+    -fx-background-color: colorPlatinum;
+}
+
+.popup .exit:hover {
+    -fx-background-color: colorRed;
+    -fx-text-fill: colorPlatinum;
+}
+
+
+
