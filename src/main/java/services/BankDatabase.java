@@ -1,10 +1,6 @@
 package main.java.services;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Date;
+import java.sql.*;
 
 public class BankDatabase {
     private static BankDatabase db = null;
@@ -48,6 +44,21 @@ public class BankDatabase {
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void iGetClient(String id, String password) {
+        try {
+            statement = connection.prepareStatement("SELECT * FROM clients WHERE user_id = ? and password = ?");
+            statement.setString(1, id);
+            statement.setString(2, password);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();;
         }
     }
 }
