@@ -28,7 +28,7 @@
             <TextField fx:id="idField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label prefHeight="17.0" prefWidth="158.0" text="Insert Card" GridPane.columnIndex="3" />
-            <Button fx:id="validateLoginInfo" mnemonicParsing="false" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#validateLoginInfo" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" text="Choose Card" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeSignInPrompt" prefHeight="25.0" prefWidth="17.0" styleClass="exit" stylesheets="@styles/style.css" text="X" GridPane.columnIndex="4" />
          </children>

@@ -6,6 +6,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import main.java.bank.Client;
+import main.java.services.BankDatabase;
 import main.java.services.Navigator;
 
 public class MainScreenController {
@@ -51,7 +53,16 @@ public class MainScreenController {
 
         if (id.contains(" ") || id.contains(";") || password.contains(" ") || password.contains(";")) return;
 
+        Client client = BankDatabase.getClient(id, password);
 
+        if (client == null) {
+            // error;
+            System.err.println("No such user found");
+        }
+
+        Client.login(client);
+
+        Navigator.navigate("userMainScreen.fxml");
 
 
     }

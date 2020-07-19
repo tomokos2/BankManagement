@@ -3,24 +3,36 @@ package main.java.bank;
 import java.sql.Date;
 
 public class Client {
+
+    static Client currentClient = null;
     private int id;
     private String firstName;
     private String lastName;
     private String userId;
     private String password;
-    private Date birth_date;
+    private Date birthDate;
     private String address;
     private boolean isAdmin;
 
-    Client (int id, String firstName, String lastName, String userId, String password, Date date, String address, boolean isAdmin) {
+    public Client () {}
+
+    public Client (int id, String firstName, String lastName, String userId, String password, Date date, String address, boolean isAdmin) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userId = userId;
         this.password = password;
-        this.birth_date = date;
+        this.birthDate = date;
         this.address = address;
         this.isAdmin = isAdmin;
+    }
+
+    public static void login(Client c) {
+        currentClient = c;
+    }
+
+    public static void logout() {
+        currentClient = null;
     }
 
     public String getFirstName() {
@@ -40,7 +52,7 @@ public class Client {
     }
 
     public Date getBirthDate() {
-        return birth_date;
+        return birthDate;
     }
 
     public String getAddress() {
