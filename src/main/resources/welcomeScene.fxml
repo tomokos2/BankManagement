@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="mainScreen" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.MainScreenController">
+<AnchorPane fx:id="mainScreen" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" styleClass="background" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.WelcomeScreenController">
    <children>
       <GridPane fx:id="signInPrompt" layoutX="278.0" layoutY="272.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="316.0" prefWidth="528.0" styleClass="popup" stylesheets="@styles/style.css">
         <columnConstraints>

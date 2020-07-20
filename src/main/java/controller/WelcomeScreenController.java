@@ -10,7 +10,7 @@ import main.java.bank.Client;
 import main.java.services.BankDatabase;
 import main.java.services.Navigator;
 
-public class MainScreenController {
+public class WelcomeScreenController {
 
     @FXML
     GridPane signInPrompt;
@@ -31,7 +31,7 @@ public class MainScreenController {
 
     @FXML
     private void onRegisterClick(ActionEvent e) {
-        Navigator.navigate("newAccountScene.fxml");
+        Navigator.navigate("newUserScene.fxml");
     }
 
     @FXML
@@ -62,7 +62,7 @@ public class MainScreenController {
 
         Client.login(client);
 
-        Navigator.navigate("userMainScreen.fxml");
+        Navigator.navigate("userAccountScene.fxml");
 
 
     }

@@ -14,8 +14,6 @@ public class Client {
     private String address;
     private boolean isAdmin;
 
-    public Client () {}
-
     public Client (int id, String firstName, String lastName, String userId, String password, Date date, String address, boolean isAdmin) {
         this.id = id;
         this.firstName = firstName;
