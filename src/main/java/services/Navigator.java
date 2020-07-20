@@ -19,12 +19,8 @@ public class Navigator {
     // The base stage of the application
     private Stage stage;
 
-    private FXMLLoader loader;
-
     // Disable constructor
-    private Navigator() {
-        loader = new FXMLLoader();
-    }
+    private Navigator() { }
 
     // Return the current instance
     private static Navigator get() {
@@ -59,12 +55,13 @@ public class Navigator {
 
         try {
             // Find the fxml file in the resources folder
-            get().loader.setLocation(
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(
                     new URL("file:///C:/Users/tomok/cs/MyProj/BankManagement/src/main/resources/"
                             + filename));
 
             // Load the file as an AnchorPane
-            AnchorPane a = get().loader.<AnchorPane>load();
+            AnchorPane a = loader.<AnchorPane>load();
 
             // Create a scene from the pane
             Scene scene = new Scene(a);

@@ -62,7 +62,7 @@ public class WelcomeScreenController {
 
         Client.login(client);
 
-        Navigator.navigate("userAccountScene.fxml");
+        Navigator.navigate("userSelectScene.fxml");
 
 
     }

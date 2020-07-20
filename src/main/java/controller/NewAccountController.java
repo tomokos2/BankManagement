@@ -9,4 +9,8 @@ public class NewAccountController {
     private void onBackToUserSelect() {
         Navigator.navigate("userSelectScene.fxml");
     }
+
+    @FXML
+    private void onSubmitForm() { }
+
 }
