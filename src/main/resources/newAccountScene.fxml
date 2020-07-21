@@ -64,9 +64,9 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <VBox prefHeight="200.0" prefWidth="200.0">
+      <VBox prefHeight="126.0" prefWidth="200.0" styleClass="popup" stylesheets="@styles/style.css">
          <children>
-            <Label text="Select Account Type" />
+            <Label text="Select New Account Type" />
              <RadioButton fx:id="checking" mnemonicParsing="false" text="Checking">
                  <toggleGroup>
                      <ToggleGroup fx:id="accountType" />

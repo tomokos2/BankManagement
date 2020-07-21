@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import main.java.bank.Client;
+import main.java.services.BankDatabase;
 import main.java.services.Navigator;
 
 public class Main extends Application {
@@ -20,6 +22,12 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
             Navigator.setStage(primaryStage);
+
+            primaryStage.setOnCloseRequest(event -> {
+                BankDatabase.shutDown();
+                Client.logout();
+            });
+
 
         } catch(Exception e) {
             e.printStackTrace();
