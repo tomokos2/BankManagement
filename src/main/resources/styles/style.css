@@ -26,7 +26,9 @@
     -fx-font-size: 15px;
 }
 
-
+.popup .radio-button {
+    -fx-text-fill: color-platinum;
+}
 
 .popup .button {
     -fx-background-color: color-platinum;
