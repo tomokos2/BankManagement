@@ -15,6 +15,6 @@ public class CDAccount implements Account {
 
     @Override
     public int getMonthlyFee() {
-        return 0;
+        return 25;
     }
 }

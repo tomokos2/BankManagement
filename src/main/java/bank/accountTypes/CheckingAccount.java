@@ -10,7 +10,7 @@ public class CheckingAccount implements Account {
 
     @Override
     public int getMinDeposit() {
-        return 0;
+        return 1000;
     }
 
     @Override

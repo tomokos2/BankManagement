@@ -2,7 +2,7 @@ package main.java.bank.accountTypes;
 
 import main.java.bank.Account;
 
-public static class RetirementAccount implements Account {
+public abstract class RetirementAccount implements Account {
     @Override
     public String getAccountType() {
         return "retirement";

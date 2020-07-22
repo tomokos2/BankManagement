@@ -8,7 +8,30 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.NewAccountController">
    <children>
-      <VBox alignment="CENTER" prefHeight="574.0" prefWidth="1000.0">
+      <AnchorPane fx:id="popupScreen" layoutX="-9.0" layoutY="-9.0" prefHeight="809.0" prefWidth="1009.0" styleClass="background" stylesheets="@styles/style.css">
+         <children>
+            <VBox layoutX="328.0" layoutY="301.0" prefHeight="207.0" prefWidth="353.0" stylesheets="@styles/style.css">
+               <children>
+                  <Label text="Select New Account Type" />
+                   <RadioButton fx:id="checking" mnemonicParsing="false" text="Checking">
+                       <toggleGroup>
+                           <ToggleGroup fx:id="accountType" />
+                       </toggleGroup>
+                  </RadioButton>
+                   <RadioButton fx:id="savings" mnemonicParsing="false" text="Savings" toggleGroup="$accountType" />
+                   <RadioButton fx:id="cd" mnemonicParsing="false" text="CD (Certificate of Deposit)" toggleGroup="$accountType" />
+                   <RadioButton fx:id="retirement" mnemonicParsing="false" text="Retirement" toggleGroup="$accountType" />
+                  <Button mnemonicParsing="false" onAction="#onBackToUserSelect" styleClass="exit" stylesheets="@styles/style.css" text="Back" />
+                  <Button layoutX="10.0" layoutY="99.0" mnemonicParsing="false" onAction="#onSelectAccount" text="Create Application" />
+               </children>
+               <styleClass>
+                  <String fx:value="popup" />
+                  <String fx:value="padded-element" />
+               </styleClass>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <VBox alignment="CENTER" prefHeight="809.0" prefWidth="1000.0" styleClass="background" stylesheets="@styles/style.css">
          <children>
             <Label text="New Account Form">
                <font>
@@ -65,28 +88,5 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <AnchorPane fx:id="popupScreen" layoutX="-9.0" layoutY="-9.0" prefHeight="809.0" prefWidth="1009.0" styleClass="background" stylesheets="@styles/style.css">
-         <children>
-            <VBox layoutX="328.0" layoutY="301.0" prefHeight="207.0" prefWidth="353.0" stylesheets="@styles/style.css">
-               <children>
-                  <Label text="Select New Account Type" />
-                   <RadioButton fx:id="checking" mnemonicParsing="false" text="Checking">
-                       <toggleGroup>
-                           <ToggleGroup fx:id="accountType" />
-                       </toggleGroup>
-                  </RadioButton>
-                   <RadioButton fx:id="savings" mnemonicParsing="false" text="Savings" toggleGroup="$accountType" />
-                   <RadioButton fx:id="cd" mnemonicParsing="false" text="CD (Certificate of Deposit)" toggleGroup="$accountType" />
-                   <RadioButton fx:id="retirement" mnemonicParsing="false" text="Retirement" toggleGroup="$accountType" />
-                  <Button mnemonicParsing="false" onAction="#onBackToUserSelect" styleClass="exit" stylesheets="@styles/style.css" text="Back" />
-                  <Button layoutX="10.0" layoutY="99.0" mnemonicParsing="false" onAction="#onSelectAccount" text="Create Application" />
-               </children>
-               <styleClass>
-                  <String fx:value="popup" />
-                  <String fx:value="padded-element" />
-               </styleClass>
-            </VBox>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>

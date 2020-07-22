@@ -19,6 +19,10 @@ public class BankDatabase {
         return db.get().iGetClient(id, password);
     }
 
+    public static void addAccount(int client_id, int deposit, String type) {
+        db.get().iAddAccount(client_id, deposit, type);
+    }
+
     private BankDatabase() {
         try {
             connection = DriverManager.getConnection(Constants.HOST, Constants.USER_NAME, Constants.PASSWORD);
@@ -56,6 +60,20 @@ public class BankDatabase {
             statement.setDate(5, date);
             statement.setString(6, address);
             statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void iAddAccount(int clientId, int deposit, String type) {
+        try {
+            statement = connection.prepareStatement("INSERT INTO bank.accounts(balance, account_type, client_id)" +
+                    "VALUES(?, ?, ?)");
+            statement.setString(1, Integer.toString(deposit));
+            statement.setString(2, type);
+            statement.setString(3, Integer.toString(clientId));
+            statement.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
