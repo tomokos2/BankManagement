@@ -1,0 +1,19 @@
+* {
+    color-cultured: #f2f2f2;
+    color-black: #000b0f;
+    color-platinum: #e7eaeb;
+    color-midnight: #003a4c;
+    color-sapphire: #004d6a;
+    color-red: #d7504d;
+    color-yellow: #e8e2b7;
+}
+
+.h {
+    fx-font-size: 30em;
+    fx-font-weight: bold;
+    fx-text-alignment: center;
+}
+
+.body {
+    fx-padding: 40em;
+}

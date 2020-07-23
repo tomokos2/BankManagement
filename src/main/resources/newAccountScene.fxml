@@ -33,7 +33,7 @@
         <items>
             <VBox prefHeight="809.0" prefWidth="240.0" BorderPane.alignment="CENTER">
                 <children>
-                    <Label text="User Information" />
+                    <Label stylesheets="@styles/applicationStyle.css" text="User Information" />
                     <Label style="-fx-wrap-text: true;" text="Confirm that the following information is correct. If it is inaccurate, please apply for changes in user settings." />
                     <HBox prefHeight="21.0" prefWidth="240.0">
                         <children>
@@ -88,7 +88,13 @@
                       <HBox prefHeight="20.0" prefWidth="240.0">
                           <children>
                               <Label text="Term Length: " />
-                              <TextField fx:id="termField" />
+                        <RadioButton fx:id="term6" mnemonicParsing="false" text="3 months">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="termLength" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="term12" mnemonicParsing="false" text="12 months" toggleGroup="$termLength" />
+                        <RadioButton mnemonicParsing="false" text="60 months" toggleGroup="$termLength" />
 
                           </children>
                       </HBox>

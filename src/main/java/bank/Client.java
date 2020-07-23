@@ -25,6 +25,8 @@ public class Client {
         this.isAdmin = isAdmin;
     }
 
+    public static Client getCurrentClient() { return currentClient; }
+
     public static void login(Client c) {
         currentClient = c;
     }
