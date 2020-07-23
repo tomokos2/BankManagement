@@ -67,7 +67,7 @@ public class BankDatabase {
 
     private void iAddAccount(int clientId, int deposit, String type) {
         try {
-            statement = connection.prepareStatement("INSERT INTO bank.accounts(balance, account_type, client_id)" +
+            statement = connection.prepareStatement("INSERT INTO bank.accounts(balance, acc_type, client_id)" +
                     "VALUES(?, ?, ?)");
             statement.setString(1, Integer.toString(deposit));
             statement.setString(2, type);

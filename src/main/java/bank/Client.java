@@ -59,6 +59,8 @@ public class Client {
         return address;
     }
 
+    public int getId() { return id; }
+
     public boolean getIsAdmin() {
         return isAdmin;
     }

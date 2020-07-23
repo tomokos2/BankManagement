@@ -2,7 +2,6 @@ package main.java.controller;
 
 
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -11,12 +10,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import main.java.bank.Client;
+import main.java.services.BankDatabase;
 import main.java.services.Navigator;
 
 
 public class NewAccountController {
 
     String selectedAccount;
+
+    @FXML
+    AnchorPane submissionPopup;
 
     @FXML
     ToggleGroup accountType;
@@ -65,7 +68,23 @@ public class NewAccountController {
     }
 
     @FXML
-    private void onSubmitForm() { }
+    private void onLogout() {
+        Client.logout();
+        Navigator.navigate("welcomeScene.fxml");
+    }
+
+    @FXML
+    private void onSubmitForm() {
+        int deposit = Integer.parseInt(initDepositField.getText());
+        if (deposit < getMinDeposit(selectedAccount)) {
+            return;
+        }
+
+        // Validate information
+
+        BankDatabase.addAccount(Client.getCurrentClient().getId(), deposit, selectedAccount);
+        submissionPopup.toFront();
+    }
 
     @FXML
     private void onSelectAccount() {
@@ -89,19 +108,21 @@ public class NewAccountController {
         };
     }
 
-//    private int getMinDeposit(String type) {
-//        switch(type) {
-//            case "checking":
-//                return 0;
-//            case "cd":
-//                break;
-//            case "retirement":
-//                break;
-//            case "savings":
-//                break;
-//            default:
-//                return 0;
-//        }
-//    }
+    private int getMinDeposit(String type) {
+        switch(type) {
+            case "checking":
+                return 25;
+            case "cd":
+                break;
+            case "retirement":
+                break;
+            case "savings":
+                break;
+            default:
+                return 0;
+        }
+
+        return 0;
+    }
 
 }
