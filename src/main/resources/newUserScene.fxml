@@ -58,6 +58,7 @@
                </opaqueInsets>
             </GridPane>
             <Button id="submitBtn" mnemonicParsing="false" onAction="#onSubmitForm" text="Submit" />
+            <Button mnemonicParsing="false" onAction="#onGoToWelcome" styleClass="exit" stylesheets="@styles/style.css" text="Back" />
 
          </children>
          <opaqueInsets>

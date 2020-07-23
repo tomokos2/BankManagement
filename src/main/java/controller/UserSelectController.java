@@ -9,6 +9,7 @@ public class UserSelectController {
     @FXML
     private void onLogout() {
         Client.logout();
+        Navigator.navigate("welcomeScene.fxml");
     }
 
     @FXML
