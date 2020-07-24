@@ -1,8 +1,17 @@
 package main.java.bank.accountTypes;
 
 import main.java.bank.Account;
+import main.java.bank.Transaction;
+
+
 
 public class CheckingAccount implements Account {
+    int balance;
+
+    public CheckingAccount(int balance) {
+        this.balance = balance;
+    }
+
     @Override
     public String getAccountType() {
         return "checking";
@@ -16,5 +25,15 @@ public class CheckingAccount implements Account {
     @Override
     public int getMonthlyFee() {
         return 0;
+    }
+
+    @Override
+    public int getBalance() {
+        return balance;
+    }
+
+    @Override
+    public Transaction getTransactions() {
+        return null;
     }
 }

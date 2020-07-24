@@ -6,4 +6,8 @@ public interface Account {
     int getMinDeposit();
 
     int getMonthlyFee();
+
+    int getBalance();
+
+    Transaction getTransactions();
 }

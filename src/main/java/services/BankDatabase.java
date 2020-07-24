@@ -1,8 +1,12 @@
 package main.java.services;
 
+import main.java.bank.Account;
+import main.java.bank.AccountFactory;
 import main.java.bank.Client;
 
 import java.sql.*;
+import java.util.LinkedList;
+import java.util.List;
 
 public class BankDatabase {
     private static BankDatabase db = null;
@@ -21,6 +25,10 @@ public class BankDatabase {
 
     public static void addAccount(int client_id, int deposit, String type) {
         db.get().iAddAccount(client_id, deposit, type);
+    }
+
+    public static List<Account> getAccounts(String id, String type) {
+        return db.get().iGetAccounts(id, type);
     }
 
     private BankDatabase() {
@@ -109,5 +117,24 @@ public class BankDatabase {
         }
 
         return null;
+    }
+
+    private List<Account> iGetAccounts(String id, String type) {
+        LinkedList<Account> accounts = new LinkedList<>();
+        try {
+            statement = connection.prepareStatement("SELECT * FROM accounts WHERE user_id = ? AND acc_type = ?");
+            statement.setString(1, id);
+            statement.setString(2, type);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                accounts.add(AccountFactory.makeAccount(type, rs.getInt("balance")));
+            }
+
+            return accounts;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return accounts;
     }
 }
