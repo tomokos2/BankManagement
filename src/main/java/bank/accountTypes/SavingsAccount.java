@@ -3,10 +3,18 @@ package main.java.bank.accountTypes;
 import main.java.bank.Account;
 import main.java.bank.Transaction;
 
+import java.sql.Date;
+import java.util.LinkedList;
+
 public class SavingsAccount implements Account {
-    int balance;
-    public SavingsAccount(int balance) {
+    private int balance;
+    private Date dateCreated;
+    private LinkedList<Transaction> transactions;
+
+    public SavingsAccount(int balance, Date dateCreated, LinkedList<Transaction> transactions) {
         this.balance = balance;
+        this.dateCreated = dateCreated;
+        this.transactions = transactions;
     }
     @Override
     public String getAccountType() {
@@ -29,7 +37,14 @@ public class SavingsAccount implements Account {
     }
 
     @Override
-    public Transaction getTransactions() {
-        return null;
+    public LinkedList<Transaction> getTransactions() {
+        return transactions;
     }
+
+    @Override
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+
 }

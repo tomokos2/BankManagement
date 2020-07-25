@@ -1,5 +1,8 @@
 package main.java.bank;
 
+import java.sql.Date;
+import java.util.LinkedList;
+
 public interface Account {
     String getAccountType();
 
@@ -9,5 +12,7 @@ public interface Account {
 
     int getBalance();
 
-    Transaction getTransactions();
+    LinkedList<Transaction> getTransactions();
+
+    Date getDateCreated();
 }
