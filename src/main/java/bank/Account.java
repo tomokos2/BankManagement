@@ -1,6 +1,5 @@
 package main.java.bank;
-
-import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public interface Account {
@@ -14,5 +13,5 @@ public interface Account {
 
     LinkedList<Transaction> getTransactions();
 
-    Date getDateCreated();
+    LocalDateTime getDateCreated();
 }

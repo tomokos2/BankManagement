@@ -1,15 +1,15 @@
 package main.java.bank;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Transaction {
     private int accountId;
-    private Date date;
+    private LocalDateTime date;
     private int amount;
     private int status;
     private String type;
 
-    public Transaction(int accountId, Date date, int amount, int status, String type) {
+    public Transaction(int accountId, LocalDateTime date, int amount, int status, String type) {
         this.accountId = accountId;
         this.date = date;
         this.amount = amount;
@@ -21,7 +21,7 @@ public class Transaction {
         return accountId;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 

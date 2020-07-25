@@ -122,13 +122,17 @@ public class BankDatabase {
     private List<Account> iGetAccounts(String id, String type) {
         LinkedList<Account> accounts = new LinkedList<>();
         try {
-            statement = connection.prepareStatement("SELECT * FROM accounts WHERE user_id = ? AND acc_type = ?");
+            statement = connection.prepareStatement(
+                    "SELECT * FROM accounts JOIN transactions " +
+                       "ON transactions.account_id = accounts.id " +
+                       "WHERE accounts.client_id = 1 AND accounts.acc_type = 'checking';");
             statement.setString(1, id);
             statement.setString(2, type);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
-                accounts.add(AccountFactory.makeAccount(type, rs.getInt("balance")));
+
+                accounts.add(AccountFactory.makeAccount(type, rs.getInt("balance"), null));
             }
 
             return accounts;
