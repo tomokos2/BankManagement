@@ -9,16 +9,16 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public abstract class AccountFactory {
-    public static Account makeAccount(String type, int balance, LocalDateTime dateCreated, LinkedList<Transaction> transactions) {
+    public static Account makeAccount(String type, int id, int balance, LocalDateTime dateCreated, LinkedList<Transaction> transactions) {
         switch (type) {
             case "cd":
-                return new CDAccount(balance, dateCreated, transactions);
+                return new CDAccount(id, balance, dateCreated, transactions);
             case "savings":
-                return new SavingsAccount(balance, dateCreated, transactions);
+                return new SavingsAccount(id, balance, dateCreated, transactions);
             case "retirement":
-                return new RetirementAccount(balance, dateCreated, transactions);
+                return new RetirementAccount(id, balance, dateCreated, transactions);
             case "checking":
-                return new CheckingAccount(balance, dateCreated, transactions);
+                return new CheckingAccount(id, balance, dateCreated, transactions);
             default:
                 System.err.println("Invalid account type");
                 return null;

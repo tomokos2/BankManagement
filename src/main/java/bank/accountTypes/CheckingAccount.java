@@ -11,8 +11,9 @@ public class CheckingAccount implements Account {
     private int balance;
     private LocalDateTime dateCreated;
     private LinkedList<Transaction> transactions;
+    private int id;
 
-    public CheckingAccount(int balance, LocalDateTime dateCreated, LinkedList<Transaction> transactions) {
+    public CheckingAccount(int id, int balance, LocalDateTime dateCreated, LinkedList<Transaction> transactions) {
         this.balance = balance;
         this.dateCreated = dateCreated;
         this.transactions = transactions;
@@ -46,5 +47,10 @@ public class CheckingAccount implements Account {
     @Override
     public LocalDateTime getDateCreated() {
         return dateCreated;
+    }
+
+    @Override
+    public int getId() {
+        return id;
     }
 }

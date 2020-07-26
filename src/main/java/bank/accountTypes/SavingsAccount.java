@@ -10,11 +10,13 @@ public class SavingsAccount implements Account {
     private int balance;
     private LocalDateTime dateCreated;
     private LinkedList<Transaction> transactions;
+    private int id;
 
-    public SavingsAccount(int balance, LocalDateTime dateCreated, LinkedList<Transaction> transactions) {
+    public SavingsAccount(int id, int balance, LocalDateTime dateCreated, LinkedList<Transaction> transactions) {
         this.balance = balance;
         this.dateCreated = dateCreated;
         this.transactions = transactions;
+        this.id = id;
     }
     @Override
     public String getAccountType() {
@@ -44,6 +46,11 @@ public class SavingsAccount implements Account {
     @Override
     public LocalDateTime getDateCreated() {
         return dateCreated;
+    }
+
+    @Override
+    public int getId() {
+        return id;
     }
 
 

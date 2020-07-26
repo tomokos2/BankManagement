@@ -127,7 +127,7 @@ public class BankDatabase {
             statement = connection.prepareStatement(
                     "SELECT * FROM accounts JOIN transactions " +
                        "ON transactions.account_id = accounts.id " +
-                       "WHERE accounts.client_id = 1 AND accounts.acc_type = 'checking';");
+                       "WHERE accounts.client_id = ? AND accounts.acc_type =  ?;");
             statement.setString(1, id);
             statement.setString(2, type);
             ResultSet rs = statement.executeQuery();
@@ -143,9 +143,9 @@ public class BankDatabase {
             while (rs.next()) {
                 if (isFirst || currAccId != rs.getInt("accounts.id")) {
                     if (!isFirst) {
-                        accounts.add(AccountFactory.makeAccount(type, balance, dateCreated, transactions));
+                        accounts.add(AccountFactory.makeAccount(type, currAccId, balance, dateCreated, transactions));
                     }
-                    currAccId = rs.getInt("account.id");
+                    currAccId = rs.getInt("accounts.id");
                     balance = rs.getInt("balance");
                     dateCreated = rs.getTimestamp("date_created").toLocalDateTime();
                     transactions = new LinkedList<>();
@@ -153,6 +153,9 @@ public class BankDatabase {
                 }
                 transactions.add(new Transaction(currAccId, rs.getTimestamp("date").toLocalDateTime(),
                         rs.getInt("amount"), rs.getInt("status"), rs.getString("type")));
+            }
+            if (!isFirst) {
+                accounts.add(AccountFactory.makeAccount(type, currAccId, balance, dateCreated, transactions));
             }
 
             return accounts;

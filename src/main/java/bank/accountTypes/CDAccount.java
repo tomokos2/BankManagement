@@ -10,11 +10,13 @@ public class CDAccount implements Account {
     private int balance;
     private LocalDateTime dateCreated;
     private LinkedList<Transaction> transactions;
+    private int id;
 
-    public CDAccount(int balance, LocalDateTime dateCreated, LinkedList<Transaction> transactions) {
+    public CDAccount(int id, int balance, LocalDateTime dateCreated, LinkedList<Transaction> transactions) {
         this.balance = balance;
         this.dateCreated = dateCreated;
         this.transactions = transactions;
+        this.id = id;
     }
 
     @Override
@@ -45,5 +47,10 @@ public class CDAccount implements Account {
     @Override
     public LocalDateTime getDateCreated() {
         return dateCreated;
+    }
+
+    @Override
+    public int getId() {
+        return id;
     }
 }

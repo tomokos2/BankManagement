@@ -14,4 +14,6 @@ public interface Account {
     LinkedList<Transaction> getTransactions();
 
     LocalDateTime getDateCreated();
+
+    int getId();
 }

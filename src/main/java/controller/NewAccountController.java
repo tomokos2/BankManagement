@@ -55,7 +55,7 @@ public class NewAccountController {
         idLabel.setText(current.getUserId());
         nameLabel.setText(current.getFirstName() + " " + current.getLastName());
         addressLabel.setText(current.getAddress());
-        birthdayLabel.setText(current.getBirthDate().toLocalDate().toString());
+        birthdayLabel.setText(current.getBirthDate().toString());
 
         driversLicenseField.textProperty().addListener(getDigitRestriction(driversLicenseField, 9));
         ssnField.textProperty().addListener(getDigitRestriction(ssnField, 4));
