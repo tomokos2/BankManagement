@@ -3,8 +3,10 @@ package main.java.services;
 import main.java.bank.Account;
 import main.java.bank.AccountFactory;
 import main.java.bank.Client;
+import main.java.bank.Transaction;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -130,9 +132,27 @@ public class BankDatabase {
             statement.setString(2, type);
             ResultSet rs = statement.executeQuery();
 
-            while (rs.next()) {
+            boolean isFirst = true;
+            int currAccId = -1;
+            int balance = 0;
+            LocalDateTime dateCreated = LocalDateTime.now();
+            LinkedList<Transaction> transactions = new LinkedList<>();
 
-                accounts.add(AccountFactory.makeAccount(type, rs.getInt("balance"), null));
+
+
+            while (rs.next()) {
+                if (isFirst || currAccId != rs.getInt("accounts.id")) {
+                    if (!isFirst) {
+                        accounts.add(AccountFactory.makeAccount(type, balance, dateCreated, transactions));
+                    }
+                    currAccId = rs.getInt("account.id");
+                    balance = rs.getInt("balance");
+                    dateCreated = rs.getTimestamp("date_created").toLocalDateTime();
+                    transactions = new LinkedList<>();
+                    isFirst = false;
+                }
+                transactions.add(new Transaction(currAccId, rs.getTimestamp("date").toLocalDateTime(),
+                        rs.getInt("amount"), rs.getInt("status"), rs.getString("type")));
             }
 
             return accounts;
