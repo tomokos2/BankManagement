@@ -1,5 +1,7 @@
 package main.java.bank;
 
+import main.java.services.BankDatabase;
+
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
@@ -34,5 +36,15 @@ public abstract class AccountBase implements Account {
     @Override
     public int getId() {
         return id;
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        BankDatabase.updateAccountBalance(id, -1 * amount);
+    }
+
+    @Override
+    public void deposit(double amount) {
+        BankDatabase.updateAccountBalance(id, amount);
     }
 }

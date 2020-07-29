@@ -29,6 +29,10 @@ public class BankDatabase {
         db.get().iAddAccount(client_id, deposit, type);
     }
 
+    public static void updateAccountBalance(int id, double newBalance) {
+        db.get().iUpdateAccountBalance(id, newBalance);
+    }
+
     public static List<Account> getAccounts(String id, String type) {
         return db.get().iGetAccounts(id, type);
     }
@@ -163,5 +167,16 @@ public class BankDatabase {
             e.printStackTrace();
         }
         return accounts;
+    }
+
+    private void iUpdateAccountBalance(int id, double newBalance) {
+        try {
+            statement = connection.prepareStatement("UPDATE accounts SET balance = ? WHERE id = ?");
+            statement.setString(1, Double.toString(newBalance));
+            statement.setString(2, Integer.toString(id));
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

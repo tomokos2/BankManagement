@@ -68,17 +68,20 @@ public class AccountSceneController {
     @FXML
     private void onDeposit() {
         if (currAccount != null) {
-
         }
     }
 
     @FXML
     private void onWithdraw() {
+        if (currAccount != null) {
 
+        }
     }
 
     @FXML
     private void onTransfer() {
+        if (currAccount != null) {
 
+        }
     }
 }

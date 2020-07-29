@@ -17,4 +17,7 @@ public interface Account {
 
     int getId();
 
+    void withdraw(double amount);
+    void deposit(double amount);
+
 }
