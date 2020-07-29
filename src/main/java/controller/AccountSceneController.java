@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import main.java.bank.Account;
 import main.java.bank.Client;
@@ -17,6 +18,9 @@ import java.util.LinkedList;
 public class AccountSceneController {
 
     @FXML
+    AnchorPane shader;
+
+    @FXML
     VBox accountScrollContent;
 
     @FXML
@@ -24,6 +28,11 @@ public class AccountSceneController {
 
     @FXML
     ToggleGroup accountType;
+
+    @FXML
+    Label balanceField;
+
+    Account currAccount;
 
     @FXML
     private void initialize() {
@@ -44,12 +53,32 @@ public class AccountSceneController {
                             transactionScrollContent.getChildren().add(tLabel);
 
                         }
+                        currAccount = a;
+                        balanceField.setText(Integer.toString(a.getBalance()));
                     });
+                    shader.toBack();
                     // Set event handler
                     accountScrollContent.getChildren().add(accountButton);
                 }
                 // Add them to the list
             }
         });
+    }
+
+    @FXML
+    private void onDeposit() {
+        if (currAccount != null) {
+
+        }
+    }
+
+    @FXML
+    private void onWithdraw() {
+
+    }
+
+    @FXML
+    private void onTransfer() {
+
     }
 }

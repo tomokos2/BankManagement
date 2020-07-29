@@ -48,7 +48,7 @@
                   <HBox fx:id="transactionsListScroll" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label text="Balance:" />
-                        <Label text="0" />
+                        <Label fx:id="balanceField" text="0" />
                      </children>
                   </HBox>
                   <Label text="Recent Transactions" />
@@ -57,12 +57,13 @@
                         <VBox fx:id="transactionScrollContent" prefHeight="200.0" prefWidth="764.0" />
                      </content>
                   </ScrollPane>
-                  <Button mnemonicParsing="false" text="Withdraw" />
-                  <Button mnemonicParsing="false" text="Deposit" />
-                  <Button mnemonicParsing="false" text="Transfer to Another Account" />
+                  <Button mnemonicParsing="false" onAction="#onWithdraw" text="Withdraw" />
+                  <Button mnemonicParsing="false" onAction="#onDeposit" text="Deposit" />
+                  <Button mnemonicParsing="false" onAction="#onTransfer" text="Transfer to Another Account" />
                 </children>
             </VBox>
          </children>
       </HBox>
+      <AnchorPane fx:id="shader" layoutX="219.0" prefHeight="800.0" prefWidth="781.0" style="-fx-background-color: gray;" />
    </children>
 </AnchorPane>

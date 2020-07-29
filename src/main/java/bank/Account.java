@@ -16,4 +16,5 @@ public interface Account {
     LocalDateTime getDateCreated();
 
     int getId();
+
 }
