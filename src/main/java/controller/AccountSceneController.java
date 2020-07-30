@@ -1,17 +1,16 @@
 package main.java.controller;
-
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import main.java.bank.Account;
 import main.java.bank.Client;
 import main.java.bank.Transaction;
 import main.java.services.BankDatabase;
-
-import java.beans.EventHandler;
 import java.util.LinkedList;
 
 
@@ -32,10 +31,23 @@ public class AccountSceneController {
     @FXML
     Label balanceField;
 
+    @FXML
+    VBox updateBalancePrompt;
+
+    @FXML
+    TextField amountField;
+
+    @FXML
+    Label promptLabel;
+
+    @FXML
+    Button submitBalanceUpdate;
+
     Account currAccount;
 
     @FXML
     private void initialize() {
+        amountField.textProperty().addListener(NewAccountController.getDigitRestriction(amountField, 100));
         accountType.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
             RadioButton rb = (RadioButton)accountType.getSelectedToggle();
 
@@ -67,13 +79,35 @@ public class AccountSceneController {
 
     @FXML
     private void onDeposit() {
+        updateBalancePrompt.toFront();
         if (currAccount != null) {
+            promptLabel.setText("Enter amount to deposit");
+            submitBalanceUpdate.setText("Deopsit");
+            submitBalanceUpdate.setOnAction(e -> {
+                String amount = amountField.getText();
+                if (amount != null && !amount.isEmpty()) {
+                    currAccount.deposit(Integer.parseInt(amount));
+                    // TODO: Add transaction;
+                    closePrompt();
+                }
+            });
         }
     }
 
     @FXML
     private void onWithdraw() {
+        updateBalancePrompt.toFront();
         if (currAccount != null) {
+            promptLabel.setText("Enter amount to withdraw");
+            submitBalanceUpdate.setText("Withdraw");
+            submitBalanceUpdate.setOnAction(e -> {
+                String amount = amountField.getText();
+                if (amount != null && !amount.isEmpty()) {
+                    currAccount.withdraw(Integer.parseInt(amount));
+                    // TODO: Add transaction;
+                    closePrompt();
+                }
+            });
 
         }
     }
@@ -83,5 +117,10 @@ public class AccountSceneController {
         if (currAccount != null) {
 
         }
+    }
+
+    @FXML
+    private void closePrompt() {
+        updateBalancePrompt.toBack();
     }
 }

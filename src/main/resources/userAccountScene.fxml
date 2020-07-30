@@ -6,10 +6,12 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controller.AccountSceneController">
    <children>
-      <VBox fx:id="pinPrompt" prefHeight="257.0" prefWidth="373.0" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="300.0">
+      <VBox fx:id="updateBalancePrompt" prefHeight="257.0" prefWidth="373.0" styleClass="popup" stylesheets="@styles/style.css" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="300.0">
          <children>
-            <Label text="Enter Pin" />
-            <PasswordField prefHeight="25.0" prefWidth="134.0" />
+            <Label fx:id="promptLabel" text="Enter Pin" />
+            <TextField fx:id="amountField" prefHeight="25.0" prefWidth="134.0" />
+            <Button fx:id="submitBalanceUpdate" mnemonicParsing="false" text="Button" />
+            <Button mnemonicParsing="false" onAction="#closePrompt" text="Button" />
          </children>
       </VBox>
       <HBox prefHeight="800.0" prefWidth="1000.0" styleClass="background" stylesheets="@styles/style.css">

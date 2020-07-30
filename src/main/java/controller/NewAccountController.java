@@ -97,7 +97,7 @@ public class NewAccountController {
         popupScreen.toFront();
     }
 
-    private ChangeListener<String> getDigitRestriction(TextField textField, int length) {
+    public static ChangeListener<String> getDigitRestriction(TextField textField, int length) {
         return (observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 textField.setText(newValue.replaceAll("[^\\d]", ""));
