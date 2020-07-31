@@ -49,6 +49,7 @@ public class AccountSceneController {
     private void initialize() {
         amountField.textProperty().addListener(NewAccountController.getDigitRestriction(amountField, 100));
         accountType.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
+            accountScrollContent.getChildren().clear();
             RadioButton rb = (RadioButton)accountType.getSelectedToggle();
 
             if (rb != null) {
@@ -57,7 +58,7 @@ public class AccountSceneController {
                     Button accountButton = new Button();
                     accountButton.setText("Account Number: " + a.getId());
                     accountButton.setOnAction(e -> {
-                        transactionScrollContent.getChildren().removeAll();
+                        transactionScrollContent.getChildren().clear();
                         LinkedList<Transaction> transactions = a.getTransactions();
                         for (Transaction t : transactions) {
                             Label tLabel = new Label();
@@ -71,9 +72,8 @@ public class AccountSceneController {
                     });
                     shader.toBack();
                     // Set event handler
-                    if (!accountScrollContent.getChildren().contains(accountButton)) {
-                        accountScrollContent.getChildren().add(accountButton);
-                    }
+                    accountScrollContent.getChildren().add(accountButton);
+
 
                 }
                 // Add them to the list
@@ -86,7 +86,7 @@ public class AccountSceneController {
         updateBalancePrompt.toFront();
         if (currAccount != null) {
             promptLabel.setText("Enter amount to deposit");
-            submitBalanceUpdate.setText("Deopsit");
+            submitBalanceUpdate.setText("Deposit");
             submitBalanceUpdate.setOnAction(e -> {
                 String amount = amountField.getText();
                 if (amount != null && !amount.isEmpty()) {
