@@ -156,7 +156,8 @@ public class BankDatabase {
                     isFirst = false;
                 }
                 transactions.add(new Transaction(currAccId, rs.getTimestamp("date").toLocalDateTime(),
-                        rs.getInt("amount"), rs.getInt("status"), rs.getString("type")));
+                        rs.getDouble("amount"), rs.getInt("status"),
+                        rs.getString("type"), rs.getString("error_msg")));
             }
             if (!isFirst) {
                 accounts.add(AccountFactory.makeAccount(type, currAccId, balance, dateCreated, transactions));

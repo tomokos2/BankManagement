@@ -3,18 +3,25 @@ package main.java.bank;
 import java.time.LocalDateTime;
 
 public class Transaction {
+    public static final int SUCCESS = 0;
+    public static final int ERROR = -1;
+    public static final int PENDING = 1;
     private int accountId;
     private LocalDateTime date;
-    private int amount;
+    private double amount;
     private int status;
     private String type;
+    private String errorMsg;
 
-    public Transaction(int accountId, LocalDateTime date, int amount, int status, String type) {
+    public static final String INSUFFICIENT_FUNDS = "Insufficient funds";
+
+    public Transaction(int accountId, LocalDateTime date, double amount, int status, String type, String errorMsg) {
         this.accountId = accountId;
         this.date = date;
         this.amount = amount;
         this.status = status;
         this.type = type;
+        this.errorMsg = errorMsg;
     }
 
     public int getAccountId() {
@@ -25,7 +32,7 @@ public class Transaction {
         return date;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
@@ -37,10 +44,12 @@ public class Transaction {
         return type;
     }
 
+    public String getErrorMsg() { return errorMsg; }
+
     public String getStatusString() {
-        if (status == 0) {
+        if (status == SUCCESS) {
             return "Success";
-        } else if (status == -1) {
+        } else if (status == ERROR) {
             return "Error";
         } else {
             return "Processing";

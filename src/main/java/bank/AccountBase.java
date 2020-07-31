@@ -40,11 +40,31 @@ public abstract class AccountBase implements Account {
 
     @Override
     public void withdraw(double amount) {
-        BankDatabase.updateAccountBalance(id, -1 * amount);
+        Transaction t;
+        if (amount > balance) {
+            // Insufficient funds;
+            t = new Transaction(id, LocalDateTime.now(), amount, Transaction.ERROR,
+                    "withdraw", Transaction.INSUFFICIENT_FUNDS);
+        } else {
+            t = new Transaction(id, LocalDateTime.now(), amount, Transaction.SUCCESS, "withdraw", null);
+        }
+        BankDatabase.updateAccountBalance(id, balance - amount);
+
+        transactions.add(t);
+
     }
 
     @Override
     public void deposit(double amount) {
-        BankDatabase.updateAccountBalance(id, amount);
+        Transaction t;
+        if (amount > balance) {
+            // Insufficient funds;
+            t = new Transaction(id, LocalDateTime.now(), amount, Transaction.ERROR,
+                    "withdraw", Transaction.INSUFFICIENT_FUNDS);
+        } else {
+            t = new Transaction(id, LocalDateTime.now(), amount, Transaction.SUCCESS, "withdraw", null);
+        }
+        BankDatabase.updateAccountBalance(id, balance +  amount);
+        transactions.add(t);
     }
 }

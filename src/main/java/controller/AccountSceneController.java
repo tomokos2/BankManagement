@@ -57,6 +57,7 @@ public class AccountSceneController {
                     Button accountButton = new Button();
                     accountButton.setText("Account Number: " + a.getId());
                     accountButton.setOnAction(e -> {
+                        transactionScrollContent.getChildren().removeAll();
                         LinkedList<Transaction> transactions = a.getTransactions();
                         for (Transaction t : transactions) {
                             Label tLabel = new Label();
@@ -70,7 +71,10 @@ public class AccountSceneController {
                     });
                     shader.toBack();
                     // Set event handler
-                    accountScrollContent.getChildren().add(accountButton);
+                    if (!accountScrollContent.getChildren().contains(accountButton)) {
+                        accountScrollContent.getChildren().add(accountButton);
+                    }
+
                 }
                 // Add them to the list
             }
@@ -87,7 +91,6 @@ public class AccountSceneController {
                 String amount = amountField.getText();
                 if (amount != null && !amount.isEmpty()) {
                     currAccount.deposit(Integer.parseInt(amount));
-                    // TODO: Add transaction;
                     closePrompt();
                 }
             });
@@ -104,7 +107,6 @@ public class AccountSceneController {
                 String amount = amountField.getText();
                 if (amount != null && !amount.isEmpty()) {
                     currAccount.withdraw(Integer.parseInt(amount));
-                    // TODO: Add transaction;
                     closePrompt();
                 }
             });
