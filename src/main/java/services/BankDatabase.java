@@ -29,8 +29,8 @@ public class BankDatabase {
         db.get().iAddAccount(client_id, deposit, type);
     }
 
-    public static void updateAccountBalance(int id, double newBalance) {
-        db.get().iUpdateAccountBalance(id, newBalance);
+    public static void updateAccountBalance(int id, double newBalance, Transaction t) {
+        db.get().iUpdateAccountBalance(id, newBalance, t);
     }
 
     public static List<Account> getAccounts(String id, String type) {
@@ -170,11 +170,22 @@ public class BankDatabase {
         return accounts;
     }
 
-    private void iUpdateAccountBalance(int id, double newBalance) {
+    private void iUpdateAccountBalance(int id, double newBalance, Transaction t) {
         try {
             statement = connection.prepareStatement("UPDATE accounts SET balance = ? WHERE id = ?");
             statement.setString(1, Double.toString(newBalance));
             statement.setString(2, Integer.toString(id));
+            statement.executeUpdate();
+
+            statement = connection.prepareStatement("INSERT INTO" +
+                    " bank.transactions(amount, type, date, status, error_msg, account_id)" +
+                    " VALUES(?, ?, ?, ?, ?, ?)");
+            statement.setString(1, Double.toString(t.getAmount()));
+            statement.setString(2, t.getType());
+            statement.setString(3, Timestamp.valueOf(t.getDate()).toString());
+            statement.setString(4, Integer.toString(t.getStatus()));
+            statement.setString(5, t.getErrorMsg());
+            statement.setString(6, Integer.toString(t.getAccountId()));
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

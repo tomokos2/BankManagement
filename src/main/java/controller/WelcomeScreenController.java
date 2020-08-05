@@ -25,7 +25,37 @@ public class WelcomeScreenController {
     PasswordField passwordField;
 
     @FXML
+    GridPane adminPrompt;
+
+    @FXML
+    TextField adminId;
+
+    @FXML
+    TextField adminPassword;
+
+    @FXML
+    private void validateAdminLogin() {
+        Client admin = getClient(adminId.getText(), adminPassword.getText());
+        if (admin == null) {
+            System.err.println("No such user found");
+        }
+
+        if (admin.getIsAdmin()) {
+            // navigate to admin screen
+        } else {
+            System.err.println("Unauthorized as admin.");
+        }
+    }
+
+    @FXML
+    private void closeAdminPrompt() {
+        adminPrompt.toBack();
+    }
+
+    @FXML
     private void onAdminLoginClick(ActionEvent e) {
+        mainScreen.toBack();
+
 
     }
 
@@ -47,13 +77,8 @@ public class WelcomeScreenController {
 
     @FXML
     private void validateLoginInfo(ActionEvent e) {
-        String id = idField.getText();
-        String password = passwordField.getText();
-        if (id == null || id.length() == 0 || password == null || password.length() == 0) return;
+        Client client = getClient(idField.getText(), passwordField.getText());
 
-        if (id.contains(" ") || id.contains(";") || password.contains(" ") || password.contains(";")) return;
-
-        Client client = BankDatabase.getClient(id, password);
 
         if (client == null) {
             // error;
@@ -64,6 +89,13 @@ public class WelcomeScreenController {
 
         Navigator.navigate("userSelectScene.fxml");
 
+    }
 
+    private Client getClient(String id, String password) {
+        if (id == null || id.length() == 0 || password == null || password.length() == 0) return null;
+
+        if (id.contains(" ") || id.contains(";") || password.contains(" ") || password.contains(";")) return null;
+
+        return BankDatabase.getClient(id, password);
     }
 }

@@ -47,19 +47,21 @@ public abstract class AccountBase implements Account {
                     "withdraw", Transaction.INSUFFICIENT_FUNDS);
         } else {
             t = new Transaction(id, LocalDateTime.now(), amount, Transaction.SUCCESS, "withdraw", null);
-        }
-        BankDatabase.updateAccountBalance(id, balance - amount);
+            balance -= amount;
+            BankDatabase.updateAccountBalance(id, balance, t);
 
-        transactions.add(t);
+            transactions.add(t);
+        }
+
 
     }
 
     @Override
     public void deposit(double amount) {
         Transaction t;
-        t = new Transaction(id, LocalDateTime.now(), amount, Transaction.SUCCESS, "withdraw", null);
-
-        BankDatabase.updateAccountBalance(id, balance +  amount);
+        t = new Transaction(id, LocalDateTime.now(), amount, Transaction.SUCCESS, "deposit", null);
+        balance += amount;
+        BankDatabase.updateAccountBalance(id, balance, t);
         transactions.add(t);
     }
 }
