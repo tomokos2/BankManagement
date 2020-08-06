@@ -14,7 +14,7 @@ import main.java.services.BankDatabase;
 import java.util.LinkedList;
 
 
-public class AccountSceneController {
+public class AccountSceneController extends ClientAcceptorControllerBase {
 
     LinkedList<Account> accounts;
 

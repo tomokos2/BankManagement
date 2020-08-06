@@ -10,7 +10,7 @@ import main.java.services.Navigator;
 
 import java.sql.Date;
 
-public class NewUserController {
+public class NewUserController extends ClientAcceptorControllerBase {
 
     @FXML
     private TextField firstNameField;

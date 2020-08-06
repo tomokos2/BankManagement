@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import main.java.bank.Client;
 import main.java.services.Navigator;
 
-public class UserSelectController {
+public class UserSelectController extends ClientAcceptorControllerBase {
 
     @FXML
     private void onLogout() {

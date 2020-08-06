@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import main.java.bank.Client;
 import main.java.services.Navigator;
 
-public class AdminMainController {
+public class AdminMainController extends ClientAcceptorControllerBase {
 
     public void loginAdmin(Client c) {
 
