@@ -16,6 +16,8 @@ import java.util.LinkedList;
 
 public class AccountSceneController {
 
+    LinkedList<Account> accounts;
+
     @FXML
     AnchorPane shader;
 
@@ -53,10 +55,13 @@ public class AccountSceneController {
             RadioButton rb = (RadioButton)accountType.getSelectedToggle();
 
             if (rb != null) {
+                // TODO: Check if this is legal
+                accounts = (LinkedList<Account>) BankDatabase.getAccounts(Integer.toString(Client.getCurrentClient().getId()), rb.getId());
                 // Get all accounts of this type
-                for (Account a : BankDatabase.getAccounts(Integer.toString(Client.getCurrentClient().getId()), rb.getId())) {
+                for (Account a : accounts) {
                     Button accountButton = new Button();
                     accountButton.setText("Account Number: " + a.getId());
+                    accountButton.setId(Integer.toString(a.getId()));
                     accountButton.setOnAction(e -> {
                         transactionScrollContent.getChildren().clear();
                         LinkedList<Transaction> transactions = a.getTransactions();
